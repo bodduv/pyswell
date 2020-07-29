@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import pytest
+
 from pyswell.skeleton import fib
 
 __author__ = "Vishal Boddu"
