@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+
+"""Building command line interface (swell).
+"""
+
+
 import click
 
 
@@ -5,7 +11,7 @@ import click
 @click.option('--config', default='_swell.yaml', help='Configuration file to swell.', envvar='SWELL_CONFIG_FILE')
 @click.pass_context
 def cli(context, config):
-    """Swell sets up a working
+    """Swell sets up a new C++ project with best practices.
     """
     print(f'got config from {config}')
     print("All is swell!")

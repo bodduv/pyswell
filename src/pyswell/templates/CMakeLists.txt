@@ -1,0 +1,20 @@
+cmake_minimum_required(VERSION ${cmake_minimum_required})
+
+project(${project_name} CXX)
+
+add_library(${target_name} INTERFACE)
+target_compile_features(${target_name} INTERFACE cxx_std_17)
+
+include(cmake/standard_project_settings.cmake)
+include(cmake/compiler_warnings.cmake)
+include(cmake/doxygen.cmake)
+include(cmake/sanitizers.cmake)
+include(cmake/static_analyzers.cmake)
+include(cmake/conan.cmake)
+
+include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+conan_basic_setup()
+
+enable_sanitizers()
+enable_doxygen()
+enable_conan()
