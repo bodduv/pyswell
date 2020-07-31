@@ -1,1 +1,24 @@
-# TODO
+---
+Checks: >
+  -*,
+  cppcoreguidelines-*,
+  google-readability-casting,
+  modernize-*,
+  -modernize-pass-by-value,
+  -modernize-raw-string-literal,
+  -modernize-use-auto,
+  -modernize-use-override,
+  -modernize-use-default-member-init,
+  -modernize-use-transparent-functors,
+  -modernize-use-trailing-return-type,
+  -modernize-use-nodiscard,
+  -modernize-avoid-c-arrays,
+  -modernize-concat-nested-namespaces,
+  use-emplace,
+  mpi-*,
+  performance-*,
+  -performance-inefficient-string-concatenation,
+  -performance-no-automatic-move"
+
+WarningsAsErrors: '*'
+---

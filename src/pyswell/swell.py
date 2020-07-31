@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 
-"""Building command line interface (swell).
+"""Generic swell command line interface (cli).
 """
 
 
 import click
+
+from .structure import create_structure, define_structure
 
 
 @click.group()
@@ -20,13 +22,18 @@ def cli(context, config):
 @cli.command()
 @click.argument('project_name')
 @click.pass_context
-def new(context, project_name):
+def init(context, project_name):
     """Start a C++ new project.
     """
-    print('\n\n')
-    print(f'A new C++ project with the name {project_name} is created.')
-    print(f'             cd {project_name}')
-    print(f'{context.obj}')
+    options = {
+        'project_name': project_name,
+        'description': 'short desc',
+        'version': '0.0.1',
+        'cmake_minimum_required': '3.10.0',
+        'target_name': 'project_name'
+    }
+    structure, _ = define_structure(options)
+    create_structure(structure, options)
 
 
 @cli.command()
