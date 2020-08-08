@@ -9,54 +9,54 @@ from pyscaffold.contrib.configupdater import ConfigUpdater
 from .templates import readme
 """
 
+
 from pathlib import Path
 from typing import Dict, List, Tuple
+from typing_extensions import Final
 
 from .templates import get_template
 
 
-def define_structure(options: Dict) -> Tuple[List, Dict]:
-    """Creates the project structure using the given options.
+def define_structure(project_name: str) -> List:
+    """Create a known project structure using the given project name.
 
-            ${PROJECT_NAME}
-            |
-            ├── cmake
-            |   └── ...cmake
-            |
-            ├── include
-            |   └── ${PROJECT_NAME}
-            |       └── { }
-            │           └── ...h
-            |
-            ├── source
-            |   ├── main.cpp
-            │   └── { }
-            │       └── ...cpp
-            |
-            ├── tests
-            |   ├── test.h
-            │   └── { }
-            │       └── ...cpp
-            |
-            └── ...
+        ${PROJECT_NAME}
+        |
+        ├── cmake
+        |   └── ...cmake
+        |
+        ├── include
+        |   └── ${PROJECT_NAME}
+        |       └── { }
+        │           └── ...h
+        |
+        ├── source
+        |   ├── main.cpp
+        │   └── { }
+        │       └── ...cpp
+        |
+        ├── tests
+        |   ├── test.h
+        │   └── { }
+        │       └── ...cpp
+        |
+        └── ...
     """
-    flat_structure = [
+    final_structure: Final[List] = [
         '.gitignore',
         '.clang-format',
         '.clang-tidy',
         '.cmake-format',
         'CMakeLists.txt',
         'README.md',
-        'include/{project_name}/utilities.h',
-        'include/{project_name}/core/class_name.h',
+        f'include/{project_name}/utilities.h',
+        f'include/{project_name}/core/class_name.h',
         'source/main.cc',
         'source/core/class_name.cc',
         'test/test.h',
     ]
 
-    flat_structure = [f.format(**options) for f in flat_structure]
-
-    return flat_structure, options
+    return final_structure
 
 
 def create_structure(structure: List, options: Dict, prefix=None) -> Tuple[List, Dict]:
@@ -64,6 +64,7 @@ def create_structure(structure: List, options: Dict, prefix=None) -> Tuple[List,
     """
 
     if prefix is None:
+        # pathlib.Path can handle filesystem paths for different operating systems.
         prefix = Path.cwd()
 
     prefix = prefix / options['project_name']
