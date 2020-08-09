@@ -1,0 +1,23 @@
+project: ${project_name}
+description: ${description}
+version: ${version}
+homepage: ${homepage}
+repository: ${repository}
+author: ${author}
+license: ${license}
+
+# Choose a package manager from the list ['conan', 'cget', 'spack']
+# in order to install dependencies.
+pkg_manager: ${pkg_manager}
+
+# Build related
+build_dir: ${build_path}
+
+# Link libraries
+dependencies:
+  private:
+    null
+  public:
+    null
+  interface:
+    null

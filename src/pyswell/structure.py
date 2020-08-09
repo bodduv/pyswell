@@ -72,7 +72,7 @@ def create_structure(structure: List, options: Dict, prefix=None) -> Tuple[List,
 
     for f in structure:
         p = Path(f)
-        filename = p.name if p.name[0] != '.' else p.name[1:]
+        filename = p.name
         p = prefix / p
         Path.mkdir(p.parent, parents=True, exist_ok=True)
         p.write_text(get_template(filename).safe_substitute(options))

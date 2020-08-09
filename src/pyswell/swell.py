@@ -88,8 +88,11 @@ def init(
 
 
 @cli.command()
-@click.option('-c', '--config', help='Configuration file to swell.', type=click.File('r'), required=True)
+@click.option('-c', '--config', help='Configuration file to swell.'
+                                     'default: .swell.yml', type=click.File('r'), default='.swell.yml')
 @click.option('-f', '--force',  help='Force overwrite an existing directory.', is_flag=True, default=False)
+@click.option('-p', '--path',   help='Path to the project directory to be updated.'
+                                     '', type=click.Path(exists=True), dir_okay=True, writable=True)
 @verbosity_params
 @click.pass_context
 def update(

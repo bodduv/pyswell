@@ -1,8 +1,16 @@
 cmake_minimum_required(VERSION ${cmake_minimum_required})
 
-project(${project_name} CXX)
+project(${project_name}
+  VERSION ${version}
+  CXX
+)
 
-add_executable(${target_name} source/main.cc)
+add_executable(${target_name}
+  source/main.cc
+)
+
+add_library(${target_name}
+)
 
 target_compile_features(${target_name} INTERFACE cxx_std_17)
 
